@@ -1,0 +1,33 @@
+$cpu-color: rgb(42, 101, 166);
+$instances-color: rgb(138, 209, 238);
+
+.chart {
+  display: block;
+}
+
+.position {
+  position: relative;
+  padding-right: 4rem;
+  padding-left: 15rem;
+  bottom: -65px;
+  z-index: 100;
+}
+
+.btn {
+  color: rgb(86, 167, 208);
+  font-weight: bold;
+}
+
+.instance {
+  .custom-control-label:before {
+    background-color: $instances-color;
+    border-color: $instances-color;
+  }
+}
+
+.cpu {
+  .custom-control-label:before {
+    background-color: $cpu-color;
+    border-color: $cpu-color;
+  }
+}

@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-between position">
+  <button class="btn" (click)="onClick()">REFRESH DATA</button>
+  <div class="d-flex justify-content-end">
+    <div class="custom-control custom-checkbox instance mr-4">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        id="instance"
+        [formControl]="instanceControl"
+      />
+      <label class="custom-control-label mr-4s" for="instance"
+        >Instance Count</label
+      >
+    </div>
+    <div class="custom-control custom-checkbox cpu">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        id="cpu"
+        [formControl]="cpuControl"
+      />
+      <label class="custom-control-label" for="cpu">CPU Utilization</label>
+    </div>
+  </div>
+</div>
+
+<highcharts-chart
+  [Highcharts]="highcharts"
+  [options]="chartOptions"
+  [(update)]="updateGraph"
+  class="chart"
+>
+</highcharts-chart>
