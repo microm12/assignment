@@ -1,4 +1,4 @@
-# assignment
+# Markos Assignment
 
 In is branch exists my implementation of a Highcharts chart with two data series displayed as a line and a column chart.
 Features implemented include, visualisation of the data deries with the ability to show/hide each one of them at any point
