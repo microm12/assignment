@@ -1,5 +1,6 @@
 $cpu-color: rgb(42, 101, 166);
 $instances-color: rgb(138, 209, 238);
+$btn-color: rgb(64, 156, 202);
 
 .chart {
   display: block;
@@ -7,15 +8,33 @@ $instances-color: rgb(138, 209, 238);
 
 .position {
   position: relative;
-  padding-right: 4rem;
-  padding-left: 15rem;
-  bottom: -65px;
+  padding-right: 3.3rem;
+  padding-left: 11rem;
+  bottom: -85px;
   z-index: 100;
+  justify-content: space-between;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.d-flex {
+  display: flex;
 }
 
 .btn {
-  color: rgb(86, 167, 208);
-  font-weight: bold;
+  position: relative;
+  bottom: 15px;
+  color: $btn-color;
+  font-weight: 900 !important;
+  font-size: 14px;
+  -webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-color: $btn-color;
+
+  &:hover {
+    color: $btn-color;
+  }
 }
 
 .instance {
@@ -26,8 +45,17 @@ $instances-color: rgb(138, 209, 238);
 }
 
 .cpu {
+  margin-left: 1.5rem;
   .custom-control-label:before {
     background-color: $cpu-color;
     border-color: $cpu-color;
+  }
+}
+
+highcharts-chart {
+  ::ng-deep {
+    .highcharts-title {
+      font-family: "Metropolis";
+    }
   }
 }

@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/scss/bootstrap";
+@import "../node_modules/@clr/ui/src/utils/components.clarity";
+@import "../node_modules/@clr/ui/src/utils/variables.clarity";
 
 body {
   background-color: whitesmoke;

@@ -1,25 +1,33 @@
-<div class="d-flex justify-content-between position">
-  <button class="btn" (click)="onClick()">REFRESH DATA</button>
+<div class="d-flex justify-content-between position" [formGroup]="formGroup">
+  <button class="btn btn-link bold" (click)="onClick()">REFRESH DATA</button>
   <div class="d-flex justify-content-end">
-    <div class="custom-control custom-checkbox instance mr-4">
-      <input
-        type="checkbox"
-        class="custom-control-input"
-        id="instance"
-        [formControl]="instanceControl"
-      />
-      <label class="custom-control-label mr-4s" for="instance"
-        >Instance Count</label
-      >
+    <div class="custom-control custom-checkbox instance">
+      <clr-checkbox-wrapper>
+        <input
+          clrCheckbox
+          type="checkbox"
+          class="custom-control-input"
+          id="instance"
+          formControlName="instance"
+        />
+        <label class="custom-control-label bold" for="instance"
+          >Instance Count</label
+        >
+      </clr-checkbox-wrapper>
     </div>
     <div class="custom-control custom-checkbox cpu">
-      <input
-        type="checkbox"
-        class="custom-control-input"
-        id="cpu"
-        [formControl]="cpuControl"
-      />
-      <label class="custom-control-label" for="cpu">CPU Utilization</label>
+      <clr-checkbox-wrapper>
+        <input
+          clrCheckbox
+          type="checkbox"
+          class="custom-control-input"
+          id="cpu"
+          formControlName="cpu"
+        />
+        <label class="custom-control-label bold" for="cpu"
+          >CPU Utilization</label
+        >
+      </clr-checkbox-wrapper>
     </div>
   </div>
 </div>

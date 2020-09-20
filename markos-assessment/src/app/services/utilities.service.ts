@@ -23,11 +23,17 @@ export class UtilitiesService {
     .filter((item) => item.y !== null);
 
   public generateValues() {
+    const generationRange = 900;
+    const skewFactor = -1.4;
+    const reductionScale = 400;
+
     const lastValue = this.instanceData[this.instanceData.length - 2].y;
-    const newCPUValue = lastValue + this.rand_normal_dist(-900, 900, -1.4);
+    const newCPUValue =
+      lastValue +
+      this.rand_normal_dist(-generationRange, generationRange, skewFactor);
     this.instanceData.push({
       x: this.generateNewInstanceTime(),
-      y: Math.round(this.cpuData[this.cpuData.length - 2].y / 400),
+      y: Math.round(this.cpuData[this.cpuData.length - 2].y / reductionScale),
     });
     this.cpuData.push({
       x: this.generateNewCPUTime(),

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import * as Highcharts from 'highcharts';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -13,8 +13,10 @@ import { UtilitiesService } from './services/utilities.service';
 export class AppComponent implements OnInit, OnDestroy {
   public highcharts = Highcharts;
   public updateGraph: boolean;
-  public cpuControl = new FormControl(true);
-  public instanceControl = new FormControl(true);
+  public formGroup = new FormGroup({
+    cpu: new FormControl(true),
+    instance: new FormControl(true),
+  });
 
   private refresh$ = new Subject();
   private destroyed$ = new Subject();
@@ -32,6 +34,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private instanceSeries: Highcharts.SeriesOptionsType = {
     name: 'Instance Count',
     type: 'column',
+    pointPadding: 0,
+    groupPadding: 0,
     color: '#8ad1ee',
     data: this.utilService.instanceData,
     visible: true,
@@ -44,9 +48,10 @@ export class AppComponent implements OnInit, OnDestroy {
       x: 87,
       y: 0,
       style: {
-        fontFamily: 'Verdana',
-        fontWeight: 'bold',
+        fontWeight: 'bolder',
+        fontSize: '16px',
         color: '#666666',
+        textOutline: '0.2px #666666',
       },
     },
     xAxis: [
@@ -140,17 +145,16 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.cpuControl.valueChanges
+    this.formGroup.valueChanges
       .pipe(takeUntil(this.destroyed$))
       .subscribe(() => {
-        this.cpuSeries.visible = !this.cpuSeries.visible;
-        this.updateGraph = true;
-      });
+        this.cpuSeries.visible = this.formGroup.controls.cpu.value
+          ? true
+          : false;
+        this.instanceSeries.visible = this.formGroup.controls.instance.value
+          ? true
+          : false;
 
-    this.instanceControl.valueChanges
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe(() => {
-        this.instanceSeries.visible = !this.instanceSeries.visible;
         this.updateGraph = true;
       });
 
