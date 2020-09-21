@@ -148,12 +148,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.formGroup.valueChanges
       .pipe(takeUntil(this.destroyed$))
       .subscribe(() => {
-        this.cpuSeries.visible = this.formGroup.controls.cpu.value
-          ? true
-          : false;
-        this.instanceSeries.visible = this.formGroup.controls.instance.value
-          ? true
-          : false;
+        this.cpuSeries.visible = this.formGroup.controls.cpu.value;
+        this.instanceSeries.visible = this.formGroup.controls.instance.value;
 
         this.updateGraph = true;
       });
