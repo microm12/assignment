@@ -9,3 +9,6 @@ to the left so that the end user can see an immediate change to the graph. The l
 so do the instances after 30s (the next data point). When the instances increase then the CPU load should decrease as the load is
 spread over more instances. For styling I used clarity, an angular oriented component/theming librabry. For the design a mockup was
 given but it was in a form of an image, so the sizes and spacings may differ slightly from the ones provided.
+
+Future improvements could include a different view when both checkboxes are unchecked and a smoother distribution of the generated data
+in order to make it seem more realistic.
