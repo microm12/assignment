@@ -31,14 +31,21 @@ export class UtilitiesService {
     const newCPUValue =
       lastValue +
       this.rand_normal_dist(-generationRange, generationRange, skewFactor);
-    this.instanceData.push({
+
+    const newInstance = this.instanceData.slice(1);
+    const newCpu = this.cpuData.slice(1);
+
+    newInstance.push({
       x: this.generateNewInstanceTime(),
       y: Math.round(this.cpuData[this.cpuData.length - 2].y / reductionScale),
     });
-    this.cpuData.push({
+    newCpu.push({
       x: this.generateNewCPUTime(),
       y: Math.round(newCPUValue),
     });
+
+    this.cpuData = newCpu;
+    this.instanceData = newInstance;
   }
 
   private generateNewCPUTime() {

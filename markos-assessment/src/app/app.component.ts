@@ -58,7 +58,6 @@ export class AppComponent implements OnInit, OnDestroy {
       {
         type: 'datetime',
         tickInterval: 1000 * 60 * 15,
-        tickAmount: 11,
         gridLineWidth: 1,
         dateTimeLabelFormats: {
           hour: '%h%P:%M',
@@ -140,6 +139,8 @@ export class AppComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroyed$), debounceTime(500))
       .subscribe(() => {
         this.utilService.generateValues();
+        (this.cpuSeries as any).data = this.utilService.cpuData;
+        (this.instanceSeries as any).data = this.utilService.instanceData;
         this.updateGraph = true;
       });
   }
